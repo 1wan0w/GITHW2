@@ -1,0 +1,186 @@
+EP_1
+
+Method: GET
+EndPoint: /get_method
+request url params: 
+ name: wlad
+ age: 22
+
+response: 
+[
+	“wlad”,
+	“22”
+]
+
+======================
+
+EP_2
+
+Method: POST
+EndPoint: /user_info_3
+request form data: 
+ name: wlad
+ age: 22
+ salary: 500
+
+response: 
+{
+	"age": 22,
+	"family": {
+		"children": [
+		[
+	        	"Alex",
+	        	24
+	        ], 
+       		[
+                	 "Kate",
+                	 12
+       	 	]
+	],
+	"u_salary_1_5_year": 2000
+	}
+	"name": "wlad",
+	"salary": 500
+}
+
+==============================
+
+EP_3
+
+Method: GET
+EndPoint: /object_info_1
+request url params: 
+ name: wlad
+ age: 22
+ weight: 60
+
+response: 
+{
+	"age': 22,
+	"daily_food": 0.72,
+	"daily_sleep": 150.0,
+	"name": "wlad"
+}
+
+==============================
+
+EP_4
+
+Method: GET
+EndPoint: /object_info_2
+request url params: 
+ name: wlad
+ age: 22
+ salary: 500
+
+response: 
+{
+	"person": {
+		"u_age": 22,
+		"u_name": [
+			"wlad",
+			500,
+			22
+		],
+		"u_salary_5_years": 2100.0
+	},
+        "qa_salary_after_1.5_years": 1650.0,
+        "qa_salary_after_12_months": 1350.0,
+        "qa_salary_after_3.5_year": 1900.0,
+        "qa_salary_after_6_months": 1000
+	"start_qa_salary": 500
+}
+
+============================================
+
+EP_5
+
+Method: GET
+EndPoint: /object_info_3
+request url params: 
+ name: wlad
+ age: 22
+ salary: 500
+
+response: 
+{
+	"age": 22,
+        "family": {
+		"children": [
+			[
+				"Alex",
+				24
+			],
+			[
+				"Kate",
+				12
+			]
+		],
+		"pets": {
+			"cat":{
+				"age": 3,
+				"name":"Sunny"
+                        },
+                        "dog": {
+				"age": 4,
+				"name": "Luky"
+                        }
+		},
+		"u_salary_1_5_years": 2000
+	},
+	"name": "wlad",
+	"salary": 500
+}
+
+==============================================
+
+EP_6
+
+Method: GET
+EndPoint: /object_info_4
+request url params: 
+ name: wlad
+ age: 22
+ salary: 500
+
+response: 
+{
+	"age": 22,	
+	"name": "wlad",
+        "salary": [
+		500,
+		1000, 
+		1500
+	]
+}
+
+========================
+
+
+EP_7
+
+Method: POST
+EndPoint: /user_info_2
+request form data: 
+ name: wlad
+ age: 22
+ salary: 500
+
+response: 
+{
+	"person": {
+		"age": 22,
+		"u_name": [
+			"wlad",
+			500,
+			22
+		],
+		"u_salary_5_years": 2100.0
+	},
+	"qa_salary_after_1.5_years": 1650.0,
+        "qa_salary_after_12_months": 1350.0,
+        "qa_salary_after_3.5_year": 1900.0,
+        "qa_salary_after_6_months": 1000,
+	"start_qa_salary": 500
+}
+
