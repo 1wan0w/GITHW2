@@ -228,8 +228,31 @@ var data = JSON.parse(responseBody);
 pm.environment.set('salary', data.salary);
 
 21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary
-var s0 = data_from_res.salary
-s0.forEach(element => console.log(element));
+
+console.log('your salary in qa')
+ 
+        for (item in data_from_res.salary) {
+            console.log('=>', data_from_res.salary[item])
+        }
+       
+OR
+
+console.log('how much money do you get')
+        for (money in data_from_res.salary) {
+            if(data_from_res.salary[money] == 500) {
+                console.log('your first salary => 500')
+            continue
+            }
+            if(data_from_res.salary[money] == '1000') {
+                console.log('your salary after 6 months => 1000')
+            continue
+            }
+            if(data_from_res.salary[money] == '1500') {
+                console.log('your salary after year => 1500')
+            continue
+            }
+        console.log('=>', data_from_res.salary[money])
+    }
 
 ======================
 
