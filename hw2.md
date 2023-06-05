@@ -179,6 +179,117 @@ http://162.55.220.72:5005/object_info_4
 20. Передать в окружение переменную salary<br> **->** `var data = JSON.parse(responseBody);`<br>
 `pm.environment.set('salary', data.salary);`
 
-21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary<br> **->** `var s0 = data_from_res.salary`<br>
-`s0.forEach(element => console.log(element));`
+21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary<br> **->** 
+ `for (item in data_from_res.salary) {`<br>
+     `console.log('=>', data_from_res.salary[item])`<br>
+ `}`<br>
+       
+OR<br>
+
+`console.log('how much money do you get')`<br>
+        `for (money in data_from_res.salary) {`<br>
+            `if(data_from_res.salary[money] == 500) {`<br>
+                `console.log('your first salary => 500')`<br>
+            `continue`<br>
+            `}`<br>
+            `if(data_from_res.salary[money] == '1000') {`<br>
+                `console.log('your salary after 6 months => 1000')`<br>
+            `continue`<br>
+            `}`<br>
+            `if(data_from_res.salary[money] == '1500') {`<br>
+              `  console.log('your salary after year => 1500')`<br>
+           ` continue`<br>
+           ` }`<br>
+        `console.log('=>', data_from_res.salary[money])`<br>
+    `}`
+    
+======================
+
+**EP_5**
+
+http://162.55.220.72:5005/user_info_2
+
+1. Вставить параметр salary из окружения в request<br> **->** `Open the Postman -> Tap on the [ Body] button -> Choose the [form-data] radiobutton -> Add new key «Salary» -> Add value {{salary}} for «Salary» key`
+
+2. Вставить параметр age из окружения в age<br> **->** `Open the Postman -> Tap on the [ Body] button -> Choose the [form-data] radiobutton -> Add new key «Age» -> Add value {{age}} for «Age» key`
+
+3. Вставить параметр name из окружения в name<br> **->** `Open the Postman -> Tap on the [ Body] button -> Choose the [form-data] radiobutton -> Add new key "Name" -> Add value {{name}} for «Name» key`
+
+4. Отправить запрос<br> **->** `pm.sendRequest("https://postman-echo.com/get", function (err, response) {`<br>
+    `console.log(response.json());`<br>
+`});`
+
+5. Статус код 200<br> **->** `pm.test("Status code is 200", function () {`<br>
+    `pm.response.to.have.status(200);`<br>
+`});`
+
+6. Спарсить response body в json<br> **->** `var data_from_res = pm.response.json();`
+
+7. Спарсить request<br> **->** `var data_from_req = request.data;`
+
+8. Проверить, что json response имеет параметр start_qa_salary<br> **->** `pm.test("ssalary_check", function () {`<br>
+    `pm.expect(data_from_res).have.property('start_qa_salary');`<br>
+`});`
+
+9. Проверить, что json response имеет параметр qa_salary_after_6_months<br> **->** `pm.test("6salary_check", function () {`<br>
+    `pm.expect(data_from_res).have.property('qa_salary_after_6_months');`<br>
+`});`
+
+10. Проверить, что json response имеет параметр qa_salary_after_12_months<br> **->** `pm.test("12salary_check", function () {`<br>
+   `pm.expect(data_from_res).have.property('qa_salary_after_12_months');`<br>
+`});`
+
+11. Проверить, что json response имеет параметр qa_salary_after_1.5_year<br> **->** `pm.test("1_5salary_check", function () {`<br>
+    `pm.expect(data_from_res).have.property('qa_salary_after_1.5_year');`<br>
+`});`
+
+12. Проверить, что json response имеет параметр qa_salary_after_3.5_years<br> **->** `pm.test("3_5salary_check", function () {`<br>
+    `pm.expect(data_from_res).have.property('qa_salary_after_3.5_years');`<br>
+`});`
+
+13. Проверить, что json response имеет параметр person<br> **->** `pm.test("person_check", function () {`<br>
+    `pm.expect(data_from_res).have.property('person');`<br>
+`});`
+
+14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request)<br> **->** `pm.test("ssalary_req", function () {`<br>
+    `pm.expect(data_from_res.start_qa_salary).to.eql(+data_from_req.salary);`<br>
+`});`
+
+15. Проверить, что параметр qa_salary_after_6_months равен salary*2 из request 
+(salary забрать из request)<br> **->** `pm.test("6salary_req", function () {`<br>
+    `pm.expect(data_from_res.qa_salary_after_6_months).to.eql(+data_from_req.salary*2);`<br>
+`});`
+
+16. Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request)<br> **->** `pm.test("12salary_req", function () {`<br>
+`pm.expect(data_from_res.qa_salary_after_12_months).to.eql(+data_from_req.salary*2.7);`<br>
+`});`
+
+17. Проверить, что параметр qa_salary_after_1.5_year равен salary*3.3 из request (salary забрать из request)<br> **->** `pm.test("1_5salary_req", function () {`<br>
+`pm.expect(data_from_res["qa_salary_after_1.5_year"]).to.eql(+data_from_req.salary*3.3);`<br>
+`});`
+
+18. Проверить, что параметр qa_salary_after_3.5_years равен salary*3.8 из request (salary забрать из request)<br> **->** `pm.test("3_5salary_req", function () {`<br>
+`pm.expect(data_from_res["qa_salary_after_3.5_years"]).to.eql(+data_from_req.salary*3.8)`<br>;
+`});`
+
+19. Проверить, что в параметре person, 1-й элемент из u_name равен salary из request (salary забрать из request)<br> **->** `pm.test("person_req", function () {`<br>
+    `pm.expect(data_from_res.person.u_name[1]).to.eql(+data_from_req.salary);`<br>
+`});`
+
+20. Проверить, что что параметр u_age равен age из request (age забрать из request)<br> **->** `pm.test("age_req", function () {`<br>
+    `pm.expect(data_from_res.person.u_age).to.eql(+data_from_req.age);`<br>
+`});`
+
+21. Проверить, что параметр u_salary_5_years равен salary*4.2 из request (salary забрать из request)<br> **->** `pm.test("5salary_req", function () {`<br>
+    `pm.expect(data_from_res.person["u_salary_5_years"]).to.eql(+data_from_req.salary*4.2);`<br>
+`});`
+
+22. *Написать цикл который выведет в консоль по порядку элементы списка из параметра person<br> **->** `console.log('who is that')`<br>
+        `for (item in data_from_res.person) {`<br>
+            `console.log('=> ', data_from_res.person[item])`<br>
+        `}`<br>
+        `for (item in data_from_res.person.u_name) {`<br>
+            `console.log('=>', data_from_res.person.u_name[item])`<br>
+            `continue`<br>
+        `}`
 
